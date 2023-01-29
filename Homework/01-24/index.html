@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=”utf-8” />
+        <title>Javascript</title>
+
+        <!-- This is a script file -->
+        <script>
+            var num = 10;
+            var name = "ARTG";
+
+            // Print command: displaying/printing the value of num
+            console.log(num);
+
+            // arithmatic operations
+            var addition = num + 10;
+
+            num = num + 10;
+            console.log(num);
+
+            // arithmatic operations without your return function of log
+            var addition = num + 10;
+
+            // concatenition of things of symbols 
+            var name = "ARTG";
+
+            console.log(name = "5330");
+
+            // boolean value: true or false, 
+
+            // let's check if num is bigger than another value
+            var isBigger = num > 100;
+
+            console.log(isBigger); 
+
+            // increment operation
+            var i = 1; 
+            i--; // shortcut for increasing value by one
+
+            console.log(i);
+
+            // initializes an array called users, which has 4 items 
+            // array data types are 0-indexed 
+            var users = ["Northeastern", 10, "ARTG", 100]; 
+
+            console.log(users[1]);
+
+            // add a function within the object
+            // this object consists of key:value pairs
+            var newObject = {
+                name: "Holmes Building",
+                color: "Green",
+                street: "Huntington Avenue 700", 
+                zip: 53719,
+                greetings: function(name) {
+                    console.log("Hey " + name + "!")
+                }  
+            }
+
+            console.log(newObject.greetings("Eva"));
+
+            // different types of functions
+
+            // a function without an input variable 
+            var printHello = function(){
+                console.log("Hello, world!");
+            }
+
+            printHello();
+
+            // a function without a string input 
+            // inside parenthesis; pass variable
+            var printName = function(name){
+                console.log("Hello " + name);
+            }
+
+            printName("Sir");
+
+            // a function with a numerical return value
+            var addValues = function(val1, val2){
+                // add two values
+                let sum = val1 + val2; 
+                // return their sum
+                return sum; 
+            }
+
+            var mySum = addValues(10, 10); 
+            console.log(mySum);
+
+            var addValues = function(val){
+                // exponentiates given value using 2
+                let exp = val**2; 
+                // return their sum
+                return exp; 
+            }
+
+            var myExp = addValues(10); 
+            console.log(myExp);
+
+            // conditional statements are if/else statements
+            var condVal = 12;
+            if (condVal <= 10) {
+                console.log("This is not so bad.");
+            } else if (condVal == 13) {
+                console.log("This is bad.");
+            } else {
+                console.log("I don't know what to do.");
+            }
+
+            // combine functions with conditional statements 
+            function greaterThanTen(val) {
+                if (val > 10) {
+                    console.log("Yes!"); 
+                } else if (val == 10) {
+                    console.log("No!");
+                } else {
+                        val++;
+                }
+
+                console.log(val);
+                return val; 
+            }
+
+            var checker = greaterThanTen(100);
+            console.log(checker);
+
+            // Squareroot function 
+            function square_root(val) {
+                if (val < 0 || isNaN(val)) {
+                    return NaN
+                }
+                let square_root = num / 2
+                let temp = 0
+                while (square_root !=temp) {
+                    temp = square_root
+                    square_root = (val / square_root + square_root) / 2
+                }
+
+                return square_root
+            }
+
+            // Squareroot Function 
+            function returnSqrt(val) {
+                if (isNan(val)) {
+                        console.log("invalid")
+                } else {
+                    return Math.sqrt(val); 
+                }
+            }
+
+            // Decreasing array
+            const points = [5, -29, 655, 23, 754, -59];
+                points.sort(function(a,b){return b-a});
+                console.log(points.sort);
+
+        </script>
+    </head>
+    <body>
+       <div>
+            <h1 id="click" onclick="myFunction()">Red</h1>
+            <h1 id="green" onclick="greenFunction()">Green</h1>
+            <h1 id="purple" onclick="purpleFunction()">Purple</h1>
+       </div>
+
+       <button onclick="myFunction()">Red</button>
+       <button onclick="greenFunction()">Green</button>
+       <button onclick="purpleFunction()">Purple</button>
+
+       <script>
+            function myFunction() {
+                document.getElementById("click").style.color = "red";
+            }
+            function greenFunction() {
+                document.getElementById("green").style.color = "green";
+            }
+            function purpleFunction() {
+                document.getElementById("purple").style.color = "purple";
+            }
+            
+       </script>
+    </body>
+</html>
