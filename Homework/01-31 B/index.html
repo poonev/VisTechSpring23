@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            svg {width:2000px; height:900px}
+            button  {float:left}
+            circle {fill:silver;stroke:silver;fill-opacity:0.5;}
+            .axis line {fill:none;stroke:#ddd;shape-rendering: crispEdges;}
+            .axis path  {fill:none;}
+        </style>
+        <script src="http://d3js.org/d3.v3.js"></script>
+    </head>
+    <body style="background-color: steelblue">
+        
+        <script>
+            var dataArray1 = [8,20,30,35,45,55,70,90,120,160];
+            var dataArray2 = [45,50,90,120,70,55,45,35,20,25,25,40];
+			var dataArray3 = [45,55,50,70];
+            
+            //globals
+            var dataIndex=1;
+            var xBuffer=50;
+            var yBuffer=350;
+            var lineLength=1000;
+            
+            
+            //create main svg element
+            var svgDoc = d3.select("body").append("svg")
+            
+            //create circles
+            svgDoc.append("g").selectAll("circle")
+                .data(eval("dataArray"+dataIndex))
+                .enter()
+                .append("circle")
+                .attr("cx",function(d,i){
+                    var spacing = lineLength/(eval("dataArray"+dataIndex).length);
+                    return xBuffer+(i*spacing)
+                })
+                .attr("cy",yBuffer)
+                .attr("r",function(d,i){return d});
+            
+            //button to swap over datasets
+            d3.select("body").append("button")
+                .text("change")
+                .on("click",function(){
+                    //select new data
+                    if (dataIndex==1) {
+                        dataIndex=2;  
+                    } else   {
+                        dataIndex=1;
+                    }
+                    //rejoin data
+                    var circle = svgDoc.select("g").selectAll("circle")
+                        .data(eval("dataArray"+dataIndex));
+                    
+                    circle.exit().remove();//remove unneeded circles
+                    circle.enter().append("circle")
+                        .attr("r",0);//create any new circles needed
+
+                    //update all circles to new positions
+                    circle.transition()
+                        .duration(1000)
+                        .attr("cx",function(d,i){
+                            var spacing = lineLength/(eval("dataArray"+dataIndex).length);
+                            return xBuffer+(i*spacing)
+                        })
+                        .attr("cy",yBuffer)
+                        .attr("r",function(d,i){return d});
+
+                    d3.select("text").text("dataset"+dataIndex);
+
+                });
+
+            
+        </script>
+    </body>
+</html>
