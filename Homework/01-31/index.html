@@ -57,7 +57,7 @@
           //      .attr("r", "30"); 
 
             //illustrate how to change multiple SVG elements
-            var circle = d3.selectAll("circle").style("fill", "silver")
+            //var circle = d3.selectAll("circle").style("fill", "silver")
         </script>
 
         <div>
@@ -118,11 +118,12 @@
             //create function that draws circles using data arrays
             function drawCircles(dataArray) {
                 //here cricles is an empty container, it waits for svg shape
-                var cirlces = d3.select("#data-viz")
-                    .selectAll("circle")
-                    .data(dataArray, function(d){
+                cirlces = d3.select("#data-viz")
+                    .selectAll("circle");
+
+                    /*.data(dataArray, function(d){
                         return d.country; 
-                    });
+                    });*/
 
                 circles.join(
                     //entering circles
