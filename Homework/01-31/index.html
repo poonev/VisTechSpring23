@@ -20,19 +20,11 @@
         <p>the D3 function</p>
         <p>.selectALL for changing multiple elements</p>  -->
 
-        <!--part 1-->
-        <script>
-            // calling functions written in a separate .js file
-            var sm = sumAB(2, 5);
-            console.log(sm);
-
-        </script>
-
         <!--part 2-->
         <!--basic D3.js functions: selections, changing attributes, ...-->
         <div>
-            <svg width="2000" height="900" id="data-viz">
-                <rect width="2000" height="900" style="fill:transparent; stroke-width:1; stroke:black" />
+            <svg width="2000" height="500" id="data-viz">
+                <rect width="2000" height="500" style="fill:transparent; stroke-width:1; stroke:black" />
                 <circle cx = "120" cy = "50" r="10"/>
                 <circle cx = "240" cy = "50" r="10"/>
                 <circle cx = "360" cy = "50" r="10"/>
@@ -167,7 +159,8 @@
                             .attr("r", "0")
                             .remove();
                     }    
-                );    
+                ); 
+                }       
         </script>
 
         <!--part 3: D3.js for animations: data arrays, enter/update/exit-->
