@@ -1,4 +1,4 @@
-d3.csv(".data/complete.csv").then(function(data) {
+d3.csv("./data/complete.csv").then(function(data) {
     // define dim of svg and create svg canvas 
     const width = document.querySelector("#chart").clientWidth;
     const height = document.querySelector("#chart").clientHeight;
@@ -14,8 +14,8 @@ d3.csv(".data/complete.csv").then(function(data) {
     
     //determine min and max values of variables 
     const durationseconds = {
-        min: d3.min(filtered_data, function(d) {return +d.durationseconds; });
-        max: d3.max(filtered_data, function(d) {return +d.durationseconds; })
+        min: d3.min(filtered_data, function(d) { return +d.durationseconds; }),
+        max: d3.max(filtered_data, function(d) { return +d.durationseconds; })
     };
 
     //create scales
@@ -52,7 +52,7 @@ d3.csv(".data/complete.csv").then(function(data) {
             .attr("y", function(d) { return yScale(d.durationseconds); })
             .attr("width", xScale.bandwidth())
             .attr("height", function(d) { return height - (margin.bottom + yScale(d.durationseconds)) })
-            .attr("fill", "steelblue");
+            .attr("fill", "blue");
 
     //axis labels
     const xAxisLabel = svg.append("text")
