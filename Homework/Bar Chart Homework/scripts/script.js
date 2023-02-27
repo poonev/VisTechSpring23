@@ -1,4 +1,4 @@
-d3.csv(".tata/complete.csv").then(function(data) {
+d3.csv(".data/complete.csv").then(function(data) {
     // define dim of svg and create svg canvas 
     const width = document.querySelector("#chart").clientWidth;
     const height = document.querySelector("#chart").clientHeight;
