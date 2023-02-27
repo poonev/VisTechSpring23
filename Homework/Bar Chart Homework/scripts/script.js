@@ -2,7 +2,7 @@ d3.csv("./data/sightings.csv").then(function(data) {
 
     //define dim 
     const width = document.querySelector("#chart").clientWidth; 
-    const height = document.querySelector("#chart").clientWidth;
+    const height = document.querySelector("#chart").clientHeight;
     const svg = d3.select("#chart")
         .append("svg")
         .attr("width", width)
@@ -31,7 +31,7 @@ d3.csv("./data/sightings.csv").then(function(data) {
         .range([margin.left, width - margin.right])
         .padding(0.5); 
     const yScale = d3.scaleLinear()
-        .domain([sightings.min, sightings.max]) 
+        .domain([0, sightings.max]) 
         .range([height - margin.bottom, margin.top]);
 
     //axes
@@ -54,6 +54,7 @@ d3.csv("./data/sightings.csv").then(function(data) {
             .attr("width", xScale.bandwidth())
             .attr("height", function(d) { return height - (margin.bottom + yScale(d.sightings)) })
             .attr("fill", "blue"); 
+    
     //axis labels
     const xAxisLabel = svg.append("text")
         .attr("class","axisLabel")
