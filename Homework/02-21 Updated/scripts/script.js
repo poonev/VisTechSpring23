@@ -233,13 +233,13 @@ d3.csv("./data/gapminder.csv").then(function(data) {
     };
 
     const xScale = d3.scaleBand()
-        .domain(["1953","1957","1962","1967","1972","1977","1982","1987","1992","1997","2002","2007"])
-        .range([margin.left, width - margin.right])
-        .padding(1);
+        .domain([gdpPercap.min, gdpPercap.max])
+        .range([margin.left, width-margin.right]);
+        .padding(.25);
 
     const yScale = d3.scaleLinear()
-        .domain([50, lifeExp.max])
-        .range([height - margin.bottom, margin.top]);
+        .domain([0, lifeExp.max])
+        .range([height-margin.bottom, margin.top]);
 
     const fillScale = d3.scaleOrdinal()
         .domain(["Asia", "Europe", "Africa", "Americas", "Oceania"])
@@ -378,7 +378,7 @@ d3.csv("./data/gapminder.csv").then(function(data) {
             .attr("y", function(d) { return yScale(d.lifeExp); })
             .attr("width", xScale.bandwidth())
             .attr("height", function(d) { return height - (margin.bottom + yScale(d.lifeExp)) })
-            .attr("fill", "green");
+            .attr("fill", function(d) { return fillScale(d.continent); });
     
     /*
     7. DRAW AXIS LABELS
