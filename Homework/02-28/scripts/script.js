@@ -152,6 +152,15 @@ d3.json("data/world-alpha3.json").then(function(world) {
      */
 
     // TO DO
+    function zoomed(e) {
+      map.attr("transform", e.transform); 
+    }
 
+    let zoom = d3.zoom()
+      .translateExtent([[0, 0], [width, height]])
+      .scaleExtent([1, 15])
+      .on("zoom", zoomed); 
+
+    svg.call(zoom); 
 
 });
