@@ -89,9 +89,9 @@ d3.json("data/world-alpha3.json").then(function(world) {
       //we use the "d" attribute in SVG graphics to define a path to be drawn. its a presentation attribute, we can also use CSS properties on it 
       .attr("d", path)
       //everything below is presentational 
-      .attr("fill", "#FCEDDA")
+      .attr("fill", "#228B22")
       .attr("vector-effect", "non-scaling-stroke")
-      .attr("stroke", "#FC766AFF")
+      .attr("stroke", "#014421")
       .attr("stroke-width", "0.5px");
     
     /**
@@ -135,7 +135,7 @@ d3.json("data/world-alpha3.json").then(function(world) {
       .enter()
       .append("circle")
       .attr("r", 4)
-      .attr("fill", "#201E30")
+      .attr("fill", "navy")
       .attr("transform", function(d){
         return "translate(" + proj(d.coords) + ")"; 
       });
@@ -152,6 +152,6 @@ d3.json("data/world-alpha3.json").then(function(world) {
      */
 
     // TO DO
-    
+
 
 });
