@@ -117,7 +117,7 @@ d3.json("data/world-alpha3.json").then(function(world) {
       },
       {
         "name": "New Orleans",
-        "coords": [29.9511, -90.0715]
+        "coords": [29.9511, 90.0715]
       }
     ]; 
 
@@ -134,7 +134,7 @@ d3.json("data/world-alpha3.json").then(function(world) {
       .data(points)
       .enter()
       .append("circle")
-      .attr("r", 4)
+      .attr("r", 3)
       .attr("fill", "navy")
       .attr("transform", function(d){
         return "translate(" + proj(d.coords) + ")"; 
@@ -153,9 +153,12 @@ d3.json("data/world-alpha3.json").then(function(world) {
 
     // TO DO
     function zoomed(e) {
+      //"e" repersents an event, that is, a zoom event
+      //e.transform represents the latest zoom transform caused by a zoom event and it is applied to the svg map element (see index.html)
       map.attr("transform", e.transform); 
     }
 
+    //calling d3.zoom() creates zoom behavior 
     let zoom = d3.zoom()
       .translateExtent([[0, 0], [width, height]])
       .scaleExtent([1, 15])
