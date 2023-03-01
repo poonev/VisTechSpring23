@@ -109,6 +109,17 @@ d3.json("data/world-alpha3.json").then(function(world) {
     //       because that is how the projection function wants them.
 
     // TO DO
+    //this is a javascriopt object, an Array of objects
+    var points = [
+      {
+        "name": "Boston",
+        "coords": [-71.0589, 42.3601]
+      },
+      {
+        "name": "London",
+        "coords": [-0.1278, 51.5074]
+      }
+    ]; 
 
     // 10. The following is a D3 join pattern for adding
     // SVG circle shapes. 
@@ -119,6 +130,15 @@ d3.json("data/world-alpha3.json").then(function(world) {
     // namely the coordinates of a point.
 
     // TO DO
+    map.selectAll("circle")
+      .data(points)
+      .enter()
+      .append("circle")
+      .attr("r", 4)
+      .attr("fill", "#201E30")
+      .attr("transform", function(d){
+        return "translate(" + proj(d.coords) + ")"; 
+      });
 
     /**
      * 11. D3 Zoom and Pan
@@ -132,5 +152,6 @@ d3.json("data/world-alpha3.json").then(function(world) {
      */
 
     // TO DO
+    
 
 });
