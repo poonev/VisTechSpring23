@@ -117,7 +117,7 @@ d3.json("data/world-alpha3.json").then(function(world) {
       },
       {
         "name": "New Orleans",
-        "coords": [29.9511, 90.0715]
+        "coords": [29.9511, -90.0715]
       }
     ]; 
 
