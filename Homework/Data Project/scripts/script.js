@@ -1,12 +1,4 @@
 /*
-    - What is the "./data/gapminder.csv" inside of the parentheses 
-    for d3.csv() referring to?
-
-    It is referring to a dataset given in csv filetype provided by
-    Gapminder that is stored locally inside the folder called "data".
-    You need to provide the exact local path to that csv file to
-    fetch it with the d3.csv() method.
-
     - The parameter named `data` inside of the function expression .then()
 
     The parameter named `data` binds to the csv file
