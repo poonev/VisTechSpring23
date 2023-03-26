@@ -6,7 +6,7 @@ html, body {
   margin: 0px;
   padding: 0px;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 div{
@@ -20,7 +20,7 @@ div{
 }
 
 .axisLabel {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 16pt;
   font-weight: bold;
   text-anchor: middle;
@@ -31,7 +31,7 @@ div{
 }
 
 .chartText {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 14pt;
   font-weight: normal;
   text-anchor: middle;

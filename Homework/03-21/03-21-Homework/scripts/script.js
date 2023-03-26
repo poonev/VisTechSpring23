@@ -104,7 +104,7 @@ function drawScatterPlot(data) {
 
     const fillScale = d3.scaleOrdinal()
         .domain(["Asia", "Europe", "Africa", "Americas", "Oceania"])
-        .range(['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e']);
+        .range(['steelblue','#d95f02','#7570b3','#e7298a','#66a61e']);
 
 
     /*
@@ -168,7 +168,7 @@ function drawScatterPlot(data) {
         .attr("class", "chartText")
         .attr("x", width/2)
         .attr("y", margin.top)
-        .text("");
+        .text("Duration in Seconds");
 
     /*
         TOOLTIP Interactivity Implementation
