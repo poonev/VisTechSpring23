@@ -100,7 +100,7 @@ function drawScatterPlot(data) {
 
     const rScale = d3.scaleSqrt()
         .domain([durationseconds.min, durationseconds.max])
-        .range([1, 15]);
+        .range([1, 20]);
 
     const fillScale = d3.scaleOrdinal()
         .domain(["Asia", "Europe", "Africa", "Americas", "Oceania"])
