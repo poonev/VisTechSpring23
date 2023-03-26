@@ -95,7 +95,7 @@ function drawScatterPlot(data) {
         .range([margin.left, width-margin.right]);
 
     const yScale = d3.scaleLinear()
-        .domain([longitude.min, longitude.max])
+        .domain([-200, longitude.max])
         .range([height-margin.bottom, margin.top]);
 
     const rScale = d3.scaleSqrt()
@@ -123,16 +123,7 @@ function drawScatterPlot(data) {
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft().scale(yScale));
     
-    /*
-        6. DRAW POINTS
-
-        In this scatter plot, each circle will represent a single country;
-        the horizontal position of the circle will represent GDP per capita,
-        vertical position will represent life expectancy, color will represent
-        continent, and radius will represent population
-
-        The following chunk of code is the standard D3 data join pattern.
-    */
+    /*   6. DRAW POINTS  */
 
     const points = svg.selectAll("circle")
         .data(filtered_data)
@@ -145,11 +136,7 @@ function drawScatterPlot(data) {
             .attr("r", function(d) { return rScale(d.durationseconds); })
             .attr("fill", function(d) { return fillScale(d.continent); });
 
-    /*
-    7. DRAW AXIS LABELS
-
-    The chunks of code below draw text labels for the axes.
-    */
+    /*    7. DRAW AXIS LABELS    */
 
     const xAxisLabel = svg.append("text")
         .attr("class","axisLabel")
