@@ -81,12 +81,7 @@ function drawScatterPlot(data) {
         max: d3.max(filtered_data, function(d) { return +d.durationseconds; })
     };
 
-    /*
-    4. CREATE SCALES
-
-    We'll use the computed min and max values to create scales for
-    our scatter plot.
-    */
+    /*    4. CREATE SCALES    */
 
     const margin = {top: 50, left: 100, right: 50, bottom: 100};
 
@@ -95,7 +90,7 @@ function drawScatterPlot(data) {
         .range([margin.left, width-margin.right]);
 
     const yScale = d3.scaleLinear()
-        .domain([-200, longitude.max])
+        .domain([longitude.min, longitude.max])
         .range([height-margin.bottom, margin.top]);
 
     const rScale = d3.scaleSqrt()
@@ -106,12 +101,7 @@ function drawScatterPlot(data) {
         .domain(["Asia", "Europe", "Africa", "Americas", "Oceania"])
         .range(['steelblue','#d95f02','#7570b3','#e7298a','#66a61e']);
 
-
-    /*
-    5. DRAW AXES
-    
-    The following chunks of code draw 2 axes -- an x- an y-axis.
-    */
+    /*    5. DRAW AXES   */
 
     const xAxis = svg.append("g")
         .attr("class","axis")
