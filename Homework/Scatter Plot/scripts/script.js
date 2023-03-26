@@ -343,7 +343,7 @@ d3.csv("./data/gapminder.csv").then(function(data) {
         .data(filtered_data)
         .enter()
         .append("circle")
-            .attr("cx", function(d) { return xScale(d.gdpPercap); })
+            .attr("cx", function(d) { return xScale(d.year); })
             .attr("cy", function(d) { return yScale(d.lifeExp); })
             .attr("r", function(d) { return rScale(d.pop); })
             .attr("fill", function(d) { return fillScale(d.continent); });
@@ -376,13 +376,13 @@ d3.csv("./data/gapminder.csv").then(function(data) {
         .attr("class","axisLabel")
         .attr("x", width/2)
         .attr("y", height-margin.bottom/2)
-        .text("GDP per Capita");
+        .text("Year of Completion");
 
     const yAxisLabel = svg.append("text")
         .attr("class","axisLabel")
         .attr("transform","rotate(-90)")
         .attr("x",-height/2)
         .attr("y",margin.left/2)
-        .text("Life Expectancy (Years)");
+        .text("Quantity");
 
 });
