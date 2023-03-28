@@ -10,6 +10,8 @@ const svg = d3.select("#chart")
         .attr("width", width)
         .attr("height", height);
 
+console.log(height); 
+
 /* 
     ADDING A TOOLTIP
         
@@ -24,10 +26,6 @@ const svg = d3.select("#chart")
 const tooltip = d3.select("#chart")
     .append("div")
     .attr("class", "tooltip");
-
-
-// Load the Gapminder dataset
-// REMINDER: d3.csv(), and all other data loading methods in D3 v7, return a "promise" object not a dataset/
 
 // Put the d3.csv() method inside an array because the static method Promise.all() below
 // requires an "iterable" object as input argument.
@@ -122,9 +120,12 @@ function drawScatterPlot(data) {
             .attr("cx", function(d) { 
                 return xScale(d.latitude); 
             })
-            .attr("cy", function(d) { return yScale(d.longitude); })
+            .attr("cy", function(d) { 
+                console.log(yScale(d.longitude));
+                return yScale(d.longitude); })
             .attr("r", function(d) { return rScale(d.durationseconds); })
             .attr("fill", function(d) { return fillScale(d.continent); });
+             
 
     /*    7. DRAW AXIS LABELS    */
 
