@@ -1,54 +1,6 @@
-/*
-    - The parameter named `data` inside of the function expression .then()
-
-    The parameter named `data` binds to the csv file
-    you fetch with the d3.csv method. Thus, it refers
-    to the gapminder.csv file.
-
-    - What kind of JavaScript data structure is `data`?
-
-    An array of objects.
-
-    - Where does the entire d3.csv().then() pattern
-        open and close in this document?
-
-    Use the VSCode interface to locate the opening
-    and closing of the d3.csv().then() pattern.
-
-    You may find it useful to examine the contents
-    of `data` with console.log(data).
-
-*/
-console.log("this worked");
-
 d3.csv("./data/artworks.csv").then(function(data) {
 
-    /*
-    1. DEFINE DIMENSIONS OF SVG + CREATE SVG CANVAS
-
-        - What is document.querySelector("#chart") doing?
-
-        The document.querySelector() method is returning the
-        FIRST element within your html document that matches the
-        specified CSS selector string, i.e., the ID "#chart". 
-        See here for more info on CSS selectors: 
-        https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
-
-        - `clientWidth` and `clientHeight` are properties of
-            elements in the DOM (Document Object Model).
-            What do these properties measure?
-
-        These properties measure the inner width and inner height
-        of an HTML element in pixels. In this example, they are 
-        measuring the width and height of the div element in the html page
-        that encapsulates the chart. Note that these values are calculated
-        according to how the chart is displayed in the browser. Thus, the 
-        values will change if you resize your browser's window. You can
-        test this behavior using console.log() prints.
-
-        Note: document.clientWidth is different from window.innerWidth
-        The d
-    */
+    /*    1. DEFINE DIMENSIONS OF SVG + CREATE SVG CANVAS   */
 
     const width = document.querySelector("#chart").clientWidth;
     const height = document.querySelector("#chart").clientHeight;
@@ -99,65 +51,29 @@ d3.csv("./data/artworks.csv").then(function(data) {
 
     //FILTER DATE
     //slice: https://www.w3schools.com/js/js_string_methods.asp
-    data.forEach ( function (d) {
-        let rawText = d.Date;
-        let newText = [];
+    // data.forEach ( function (d) {
+    //     let rawText = d.Date;
+    //     let newText = [];
 
-        for (let i = 0; i < ____; i++) {
-            if (position = n.d.) {
-                //discard;
-            } else {
-                //take 4 right characters
-            }
+    //     for (let i = 0; i < ____; i++) {
+    //         if (position = n.d.) {
+    //             //discard;
+    //         } else {
+    //             //take 4 right characters
+    //         }
         
-        let queryText = 'item'; 
+    //     let queryText = 'item'; 
 
-        d.Text = newText; 
+    //     d.Text = newText; 
 
-    console.log(d.Date); 
-    })
+    // console.log(d.Date); 
+    // })
 
-    /*
-    3. DETERMINE MIN AND MAX VALUES OF VARIABLES
 
-    In the following section, we'll use the methods d3.min() and d3.max()
-    to calculate minimum and maximum values of the variables in our data set.
+    // COUNT NUMBER OF EACH MEDIUM
 
-    Note that to keep things clean, we're organizing the minimum and maximum
-    values inside of objects, and storing those min/max values in properties
-    named inside those objects. This helps make it easier to refer to these
-    values later in our code.
 
-        - What does d3.min() do? What does d3.max() do?
-            What are the 2 arguments we supply to d3.min()/d3.max()?
-
-        The functions d3.min() and d3.max() return the minimum and
-        maximum numerical values stored in an array. Here, the first
-        argument is the filtered dataset we created just above and the
-        second argument is an ACCESSOR function. The purpose of this
-        function is to specify which exact column in the dataset
-        contains the numerical values we are interested in. So, `d`
-        refers to the rows of the filtered dataset, and the function
-        accesses each row and returns specifically the value for the
-        variable `lifeExp`. Thus, min and max here are the minimum
-        and maximum numerical values in the column for `lifeExp`.
-        Note, we also coerce the strings into numbers to make this work.
-        Remember that d3.csv() loads the data in the form of strings.
-        To work with numbers represented as strings, you must explicitly
-        cast them back into numbers.
-
-        - In the second argument for both d3.min() and d3.max(),
-            the function expression has a parameter named `d`.
-            What is `d` a reference to?
-
-        See above answer.
-
-        - Why is there a plus sign (+) in front of d.gdpPercap,
-            d.lifeExp, and d.pop?
-
-        See above answer.
-
-    */
+    /*    3. DETERMINE MIN AND MAX VALUES OF VARIABLES  */
 
     // const Date = {
     //     min: d3.min(filtered_data, function(d) { return +d.Date; }),
