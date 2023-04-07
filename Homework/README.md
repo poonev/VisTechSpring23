@@ -16,3 +16,4 @@ Software Run Instructions:
 Index.html, Javascript, Stylesheet, and CSV file must all run in conjunction for desired outcome. Codes are completely set-up and ready to run as is. This project uses D3 library. Undesired outcome can be resolved by troubleshooting using console.log in JavaScript after each step. 
 
 Link to Write-up: 
+https://docs.google.com/document/d/1tZ7nEaFvXhF81jCh3t4g8Yb_oiRSAQYQFVEeMAqE59U/edit?usp=sharing
