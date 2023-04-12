@@ -1,0 +1,24 @@
+div {
+  text-align: center;
+}
+
+body {
+  font-family: Sans-Serif;
+}
+
+line {
+  fill: none; 
+  stroke: rgb(79, 143, 196); 
+  stroke-width: 4; 
+}
+
+circle {
+  fill: rgb(32, 81, 121); 
+  stroke: none; 
+}
+
+text {
+	font-size: 12px;
+	text-anchor: middle;
+  color: gray; 
+}
