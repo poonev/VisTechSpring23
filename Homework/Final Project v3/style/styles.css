@@ -1,0 +1,37 @@
+{
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    color: rgb(75, 75, 75);
+}
+
+#chart {
+    width: 100%;
+    height: 80vh;
+}
+
+.axisLabel {
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-size: 16pt; 
+    font-weight: bold; 
+    text-anchor: middle; 
+    color: rgb(75, 75, 75);
+}
+
+#filter-button {
+    background-color: #90949d; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }

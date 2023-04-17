@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=”utf-8” name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- https://www.w3schools.com/html/html_responsive.asp -->
+        <!-- https://d3-graph-gallery.com/graph/scatter_basic.html -->
+        <title>Mies van der Rohe's Artworks</title>
+
+        <link rel="stylesheet" type="text/css" href="./style/styles.css">
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <style>  
+            div {  
+              padding-left: 200px; 
+              padding-right: 200px;
+              padding-bottom: 20px; 
+              padding-top: 20px; 
+            }  
+            </style>  
+    </head>
+    <body>
+        <img src="pictures/mies.jpg" style="width:105%" alt="welcome photo">
+    </body>
+    <body style="margin:50; padding:50">
+       <h1 style="color:gray; font-size: 40px">Museum of Modern Art</h1>
+       <h1 style="font-size: 50px">Mies van der Rohe</h1>
+       <h1> <em>Artworks</em> </h1>
+
+        <div class="container">
+            <p align="justify" style="font-size: 25px">About Mies van der Rohe (1886–1969)</p>
+            <div class="column">
+                <p1 align="justify" style="font-size: 18px">Mies van der Rohe was a German-American architect and furniture designer and regarded as “one of the pioneers of modernist architecture."
+                He created numerous projects ranging from furniture to architecture to art,
+                using a variety of mediums such as pen, pencil, printmaking, watercolor, and much more. From domestic spaces like the Villa Tugendhat in the Czech Republic to large, elaborate office towers like New York’s Seagram Building, he imbued his buildings with a fluid spatial harmony reflective of his oft-quoted aphorism, “less is more.” 
+                Mies van der Rohe is currently the 3rd most represented artist in the MoMA collection. 
+                </p1> 
+            </div>
+            <div class="column">
+                <img src="pictures/mies photograph.png" style="width:500px" alt="Vereinigte Glaswerke project">
+                <p align="justify" style="font-size: 10px">Vereinigte Glaswerke project, Aachen, Germany, 1969. Cantilever Chair, 1927. Barcelona Chair, 1929.</p>
+            </div>
+        </div>
+
+            <br><br>
+
+        <div class="row">
+            <p align="justify" style="font-size: 25px">The Artworks</p>
+            <div class="column">
+                <p1 align="justify" style="font-size: 18px">The goal of this project is to dig deeper into the MoMA Collection's Datasets by studying one particular 
+                artist: Ludwig Mies van der Rohe. By looking at Mies van der Rohe's works, we want to undrstand the quantity of artworks produced by Mies van der Rohe (collected by the MoMA), 
+                the variety of mediums he used to create these artworks, and if there was a change in mediums as he continued to produce more works. Through a density scatterplot, 
+                we are able to visualize on a timeline the amount of works he produced each year and with what mediums used to produce those works. </p1>
+                </div>
+            <div class="column">
+                    <img src="pictures/bismarck monument.png" style="width:500px" alt="Bismarck Monument">
+                <p align="justify" style="font-size: 10px">Bismarck Monument. Bingen, Germany. Perspective view of courtyard, 1910.</p>
+            </div>
+        </div>
+
+        <br><br>
+
+        <p1 align="justify" style="font-size: 18px">Interact with the scatterplot to learn about Mies van der Rohe's projects, mediums, and his career timeline.</p1>
+
+        <div class="section">
+            <div class="column">
+                <div id="chart"></div>
+
+            </div>
+            <div class="column">
+                <img src="pictures/legend.png" style="width:150px" alt="legend">
+            </div>
+        </div>
+
+        <p><a href="./data/artworks.csv">click here to download the dataset from MoMA</a></p>
+
+        <br><br>
+
+       <script src="./scripts/script.js"></script>
+    </body>
+</html>

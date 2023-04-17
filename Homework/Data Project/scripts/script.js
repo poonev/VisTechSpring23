@@ -1,7 +1,6 @@
 d3.csv("./data/artworks.csv").then(function(data) {
 
     /*    1. DEFINE DIMENSIONS OF SVG + CREATE SVG CANVAS   */
-
     const width = document.querySelector("#chart").clientWidth;
     const height = document.querySelector("#chart").clientHeight;
     //If chart doesn't draw, might have to change this to clientinnerwidth and height
@@ -35,10 +34,6 @@ d3.csv("./data/artworks.csv").then(function(data) {
         //for every item in arrayKeywords (for loop over arrayKeywords), 
                 // define my queryText= "some text" 
         let queryText = 'item'; 
-                
-                //let cellText = "some other text" 
-                //how do I find occurrences of queryText within cellText? 
-                    //google search string matching 
                 //if you find occurrence of 'item' then define newText = 'item'
                     //subset of arrayKeywords
                 //if you find occurrence of queryText in cellText, then: 
@@ -50,166 +45,129 @@ d3.csv("./data/artworks.csv").then(function(data) {
     // console.log(d.Medium); 
     })
 
-    //FILTER DATE
-    //slice: https://www.w3schools.com/js/js_string_methods.asp
-    // data.forEach ( function (d) {
-    //     let rawText = d.Date;
-    //     let newText = [];
+    // COUNT OCCURANCES 
+    const mediumData = []; 
+    data.forEach( function(currentrow) {
+        // console.log(currentrow["Medium"]); 
+        var currentMediums = currentrow["Medium"]
+        // var newLine = {}
+        for (let i = 0; i < arrayKeywords.length; i++) {
+            let position = currentMediums.indexOf(arrayKeywords[i]);  
+            if (position != -1) {
+                // newLine[arrayKeywords[i]] = 1
+                var newLine = {}
+                newLine["Year"] = currentrow["Date"]
+                newLine["Medium"] = arrayKeywords[i]
+                mediumData.push(newLine)
+                }
+            }
+        // newLine["Year"] = currentrow["Date"]
+        // mediumData.push(newLine)
+    })
 
-    //     for (let i = 0; i < ____; i++) {
-    //         if (position = n.d.) {
-    //             //discard;
-    //         } else {
-    //             //take 4 right characters
-    //         }
-        
-    //     let queryText = 'item'; 
+    const finalData = d3.rollup(mediumData, d=>d.length, d=>d.Year, d=>d.Medium)
+    console.log(finalData); 
 
-    //     d.Text = newText; 
+    for(let obj of finalData.entries()) {
 
-    // console.log(d.Date); 
-    // })
-
-
-    // COUNT NUMBER OF OCCURANCES FOR EACH MEDIUM 
-    var dataset = d.Medium;
-    var search = acrylic; 
-    var count = dataset.reduce(function(n, val) {
-        return n+ (val === search); 
-    }, 0); 
-
-    console.log(count); 
-
-    //or another version:
-    // https://www.freecodecamp.org/news/how-to-count-objects-in-an-array/
-    const storage = d.Medium
-    let counter = acrylic; 
-    for (let i = acrylic; i < storage.length; i++) {
-        if (storage[i].status === 'acrylic') counter++; 
     }
 
-    console.log(counter); 
 
-
-
-    /*    3. DETERMINE MIN AND MAX VALUES OF VARIABLES  */
+    /*    3. MIN AND MAX VALUES OF VARIABLES  */
     const Date = {
-        min: d3.min(filtered_data, function(d) { return +d.Date; }),
-        max: d3.max(filtered_data, function(d) { return +d.Date; })
+        min: d3.min(finalData, function(d) { return +d.Date; }),
+        max: d3.max(finalData, function(d) { return +d.Date; })
     };
     // console.log(Date.min);
 
     const Medium = {
-        min: d3.min(filtered_data, function(d) { return +d.Medium; }),
-        max: d3.max(filtered_data, function(d) { return +d.Medium; })
+        min: d3.min(finalData, function(d) { return +d.value; }),
+        max: d3.max(finalData, function(d) { return +d.value; })
     };
-    // console.log(Medium.min); 
+    console.log(finalData.min); 
+
+    /*  4. CREATE SCALES
+        Please refer to these nice explanations/tutorials: 
+            https://medium.com/@mbostock/introducing-d3-scale-61980c51545f
+            https://jckr.github.io/blog/2011/08/11/d3-scales-and-color/
+
+        - What does d3.scaleSqrt() do?
+        This function creates a square-root based scale by transforming a given
+        domain so that values in that domain are proportional to their square root.
+        If a value `x` is 4 times bigger than value `a`, then the result is only
+        multiplied by 2 the square root of 4. 
+        See this demonstration: https://observablehq.com/@d3/continuous-scales#scale_sqrt
+
+        - What does d3.scaleOrdinal() do?
+        This function maps two finite sets made up of
+        discrete "things" in a one-by-one fashion. It takes
+        categorical domain consisting of continent names and
+        maps them into color values.
+        See this demonstration: https://observablehq.com/@d3/d3-scaleordinal
+
+        xScale: The domain and range are uncountable.
+        yScale: The domain and range are uncountable.
+        rScale: The domain and range are uncountable.
+        fillScale: The domain and range are finite sets, each one
+        consisting of five values.  */
+
+    const margin = {top: 50, left: 100, right: 50, bottom: 100};
+
+    const xScale = d3.scaleLinear()
+        .domain([1910, 1969])
+        .range([margin.left, width-margin.right]);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, finalData.max])
+        .range([height-margin.bottom, margin.top]);
+
+    const rScale = d3.scaleSqrt()
+        .domain([1, finalData.max])
+        .range([1, 15]);
+
+    const fillScale = d3.scaleOrdinal()
+        .domain(["acrylic","charcoal","collage","colored pencil","crayon","glass","gouache","graphite","ink","lithograph","paint","pen","pencil","print","steel","wood"])
+        .range(['#E5D08C','#F2E7CD','#BC9D44','#C2B5AD','#7C6458','#B99A6D','#C38B64','#8F5138','#762F21','#6C914D','#78856E','#6C948A','#3B658D','#79647B','#AC626E','#EAAA9B']);
 
 
+    /*    5. DRAW AXES    */
+    const xAxis = svg.append("g")
+        .attr("class","axis")
+        .attr("transform", `translate(0,${height-margin.bottom})`)
+        .call(d3.axisBottom().scale(xScale));
 
-    // /*
-    // 4. CREATE SCALES
-    //     Please refer to these nice explanations/tutorials: 
-    //         https://medium.com/@mbostock/introducing-d3-scale-61980c51545f
-    //         https://jckr.github.io/blog/2011/08/11/d3-scales-and-color/
-
-    //     - What does d3.scaleSqrt() do?
-
-    //     This function creates a square-root based scale by transforming a given
-    //     domain so that values in that domain are proportional to their square root.
-    //     If a value `x` is 4 times bigger than value `a`, then the result is only
-    //     multiplied by 2 the square root of 4. 
-    //     See this demonstration: https://observablehq.com/@d3/continuous-scales#scale_sqrt
-
-    //     - What does d3.scaleOrdinal() do?
-
-    //     This function maps two finite sets made up of
-    //     discrete "things" in a one-by-one fashion. It takes
-    //     categorical domain consisting of continent names and
-    //     maps them into color values.
-    //     See this demonstration: https://observablehq.com/@d3/d3-scaleordinal
-
-    //     xScale: The domain and range are uncountable.
-    //     yScale: The domain and range are uncountable.
-    //     rScale: The domain and range are uncountable.
-    //     fillScale: The domain and range are finite sets, each one
-    //     consisting of five values.
-
-    // */
-
-    // const margin = {top: 50, left: 100, right: 50, bottom: 100};
-
-    // const xScale = d3.scaleLinear()
-    //     .domain([Year.min, Year.max])
-    //     .range([margin.left, width-margin.right]);
-
-    // const yScale = d3.scaleLinear()
-    //     .domain([0, Medium.max])
-    //     .range([height-margin.bottom, margin.top]);
-
-    // const rScale = d3.scaleSqrt()
-    //     .domain([pop.min, pop.max])
-    //     .range([1, 15]);
-
-    // const fillScale = d3.scaleOrdinal()
-    //     .domain(["acrylic","charcoal","collage","colored pencil","crayon","glass","gouache","graphite","ink","lithograph","paint","pen","pencil","print","steel","wood"])
-    //     .range(['#E5D08C','#F2E7CD','#BC9D44','#C2B5AD','#7C6458','#B99A6D','#C38B64','#8F5138','#762F21','#6C914D','#78856E','#6C948A','#3B658D','#79647B','#AC626E','#EAAA9B']);
-
-
-    // /*    5. DRAW AXES    */
-    // const xAxis = svg.append("g")
-    //     .attr("class","axis")
-    //     .attr("transform", `translate(0,${height-margin.bottom})`)
-    //     .call(d3.axisBottom().scale(xScale));
-
-    // const yAxis = svg.append("g")
-    //     .attr("class","axis")
-    //     .attr("transform", `translate(${margin.left},0)`)
-    //     .call(d3.axisLeft().scale(yScale));
+    const yAxis = svg.append("g")
+        .attr("class","axis")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft().scale(yScale));
 
 
     // /*    6. DRAW POINTS
-    // The following chunk of code is the standard D3 data join pattern.
-    //     - What is the purpose of the pattern svg.selectAll().data().enter().append()?
-
-    //     This is a standard pattern for joining data with D3. 
-    //     The purpose of this pattern is to JOIN data with DOM elements, 
-    //     such as SVG basic shapes (e.g., rect). The pattern starts with
-    //     .selectALl() that selects all the currently existing shapes and
-    //     binds them with the provided dataset using .data(). Then,
-    //     you use .enter() to check what ADDITIONAL shapes you must
-    //     create/append to complete the binding. For example, if you
-    //     have NO SHAPES of the type "rect" in the beginning, then
-    //     .enter().append("rect") will append as many rectangles as
-    //     needed to bind all the data points in your dataset. If you have
-    //     1 "rect" and 3 data points, then it will append 2 missing
-    //     "rect" shapes to complete the binding. Essentially, .enter()
-    //     tells you which data points are missing a corresponding DOM
-    //     element.  */
-
-    // const points = svg.selectAll("circle")
-    //     .data(filtered_data)
-    //     .enter()
-    //     .append("circle")
-    //         .attr("cx", function(d) { return xScale(d.Year); })
-    //         .attr("cy", function(d) { return yScale(d.lifeExp); })
-    //         .attr("r", function(d) { return rScale(d.pop); })
-    //         .attr("fill", function(d) { return fillScale(d.continent); });
+    const points = svg.selectAll("circle")
+        .data(finalData)
+        .enter()
+        .append("circle")
+            .attr("cx", function(d) { return xScale(d.Year); })
+            .attr("cy", function(d) { 
+                    // console.log(d.value)
+                    return yScale(d.value); })
+            .attr("r", function(d) { return rScale(d.value); })
+            .attr("fill", function(d) { return fillScale(d.Medium); });
     
     // /*    7. DRAW AXIS LABELS   */
 
-    // const xAxisLabel = svg.append("text")
-    //     .attr("class","axisLabel")
-    //     .attr("x", width/2)
-    //     .attr("y", height-margin.bottom/2)
-    //     .text("Year");
+    const xAxisLabel = svg.append("text")
+        .attr("class","axisLabel")
+        .attr("x", width/2)
+        .attr("y", height-margin.bottom/2)
+        .text("Year");
 
-    // const yAxisLabel = svg.append("text")
-    //     .attr("class","axisLabel")
-    //     .attr("transform","rotate(-90)")
-    //     .attr("x",-height/2)
-    //     .attr("y",margin.left/2)
-    //     .text("Quantity");
+    const yAxisLabel = svg.append("text")
+        .attr("class","axisLabel")
+        .attr("transform","rotate(-90)")
+        .attr("x",-height/2)
+        .attr("y",margin.left/2)
+        .text("Quantity per Medium");
 
 
     //     /*   TOOLTIP Interactivity Implementation   */
@@ -256,4 +214,4 @@ d3.csv("./data/artworks.csv").then(function(data) {
     //     // Reset the circles' appearance back to original
     //     points.attr("opacity", 1);
 
-    // });
+    });
