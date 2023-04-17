@@ -138,7 +138,7 @@ function drawScatterPlot(data) {
     const xAxis = svg.append("g")
         .attr("class","axis")
         .attr("transform", `translate(0,${height-margin.bottom})`)
-        .call(d3.axisBottom().scale(xScale));
+        .call(d3.axisBottom().scale(xScale).tickFormat(d => d.toLocaleString(undefined, { useGrouping: false })));
 
     const yAxis = svg.append("g")
         .attr("class","axis")
@@ -151,9 +151,7 @@ function drawScatterPlot(data) {
         .data(filtered_data)
         .enter()
         .append("circle")
-            .attr("cx", function(d) { 
-                return xScale(d.year); 
-            })
+            .attr("cx", function(d) { return xScale(d.year);   })
             .attr("cy", function(d) { return yScale(d.quantity); })
             .attr("r", function(d) { return rScale(d.quantity); })
             .attr("fill", function(d) { return fillScale(d.medium); });
@@ -218,36 +216,41 @@ function drawScatterPlot(data) {
 
         
     // Create the filter dropdown menu
+    var filterOptions = ['acrylic', 'charcoal', 'collage', 'colored pencil', 'crayon', 'glass', 'gouache', 'graphite','ink','lithograph','paint','pen','pencil','print','steel','wood'];
 
-    // const svg = d3.select("#filter-button")
-    //     .append("svg")
-
-    // var filterDropdown = d3.select("body")
-    //     .append("select")
-    //     .attr("id", "category-filter")
-    //     .on("change", filterDropdown);
-
-    //     filterDropdown.append("option")
-    //     .attr("value", "All")
-    //     .text("all");
-
-    //     filterDropdown.append("option")
-    //     .attr("value", "acrylic")
-    //     .text("acrylic");
-
-    //     filterDropdown.append("option")
-    //     .attr("value", "charcoal")
-    //     .text("charcoal");
-
-    //     filterDropdown.append("option")
-    //     .attr("value", "collage")
-    //     .text("collage");
-
-    //     // Create the filter button
-    //     var filterButton = d3.select("body")
-    //     .append("button")
-    //     .text("filter")
-    //     .on("click", filterDropdown);
-
+    d3.select('#filter')
+        .selectAll('option')
+        .data(filterOptions)
+        .enter()
+        .append('option')
+        .text(function(d) { return d.quantity; })
+        .attr('value', function(d) { return d.quantity; });
+    
+    d3.select('#filter').on('change', function() {
+        var selectedOption = d3.select(this).property('value');
+        // Use the selectedOption to filter the data and update the scatterplot
+        });
+    
+    var filteredData = data.filter(function(d) {
+        return selectedOption === 'all' || d.quantity === selectedOption;
+        });
+    
+        //enter update exit
+    var circles = svg.selectAll('circle')
+        .data(filteredData, function(d) { return d.id; });
+      
+      circles.enter().append('circle')
+        .attr('cx', function(d) { return xScale(d.year); })
+        .attr('cy', function(d) { return yScale(d.quantity); })
+        .attr('r', function(d) { return rScale(d.quantity); })
+        .attr('fill', function(d) {return fillScale(d.medium); });
+      
+      circles.exit().remove();
+      
+      circles.attr('cx', function(d) { return xScale(d.year); })
+        .attr('cy', function(d) { return yScale(d.quantity); })
+        .attr('r', function(d) { return rScale(d.quantity); })
+        .attr('fill', function(d) {return fillScale(d.medium); });
+      
     });
 }

@@ -25,8 +25,8 @@ html, body {
     color: rgb(75, 75, 75);
 }
 
-#filter-button {
-    background-color: #90949d; 
+#filter {
+    background-color: #8f8f90; 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -36,6 +36,7 @@ html, body {
     font-size: 16px;
     margin: 10px;
     cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
 
   .no-padding {
@@ -68,3 +69,10 @@ html, body {
     pointer-events: none;
     display: none;
   } */
+
+  .scatterplot .ticks .tick text::after {
+    content: attr(data-value);
+    font-size: 0.8em;
+    margin-left: 2px;
+  }
+  
