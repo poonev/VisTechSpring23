@@ -98,6 +98,7 @@ function drawScatterPlot(data) {
         min: d3.min(filtered_data, function(d) { return +d.year; }),
         max: d3.max(filtered_data, function(d) { return +d.year; })
     };
+    // console.log(year.min)
 
     // const quantity = {
     //     min: d3.min(filtered_data, function(d) { return +d.quantity; }),
@@ -218,35 +219,35 @@ function drawScatterPlot(data) {
         
     // Create the filter dropdown menu
 
-    const svg = d3.select("#filter-button")
-        .append("svg")
+    // const svg = d3.select("#filter-button")
+    //     .append("svg")
 
-    var filterDropdown = d3.select("body")
-        .append("select")
-        .attr("id", "category-filter")
-        .on("change", filterDropdown);
+    // var filterDropdown = d3.select("body")
+    //     .append("select")
+    //     .attr("id", "category-filter")
+    //     .on("change", filterDropdown);
 
-        filterDropdown.append("option")
-        .attr("value", "All")
-        .text("all");
+    //     filterDropdown.append("option")
+    //     .attr("value", "All")
+    //     .text("all");
 
-        filterDropdown.append("option")
-        .attr("value", "acrylic")
-        .text("acrylic");
+    //     filterDropdown.append("option")
+    //     .attr("value", "acrylic")
+    //     .text("acrylic");
 
-        filterDropdown.append("option")
-        .attr("value", "charcoal")
-        .text("charcoal");
+    //     filterDropdown.append("option")
+    //     .attr("value", "charcoal")
+    //     .text("charcoal");
 
-        filterDropdown.append("option")
-        .attr("value", "collage")
-        .text("collage");
+    //     filterDropdown.append("option")
+    //     .attr("value", "collage")
+    //     .text("collage");
 
-        // Create the filter button
-        var filterButton = d3.select("body")
-        .append("button")
-        .text("filter")
-        .on("click", filterDropdown);
+    //     // Create the filter button
+    //     var filterButton = d3.select("body")
+    //     .append("button")
+    //     .text("filter")
+    //     .on("click", filterDropdown);
 
     });
 }

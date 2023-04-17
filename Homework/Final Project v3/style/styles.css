@@ -47,12 +47,24 @@ html, body {
     flex-direction: row;
     align-items: center;
     width: 90%;
-    padding: 0; 
+    padding: 40px; 
     align: center; 
-    margin-left: 40px; 
+    /* margin-left: 40px;  */
   }
   .container img {
     margin-right: 0px;
     padding: 0; 
     align: center; 
   }
+
+  /* .tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    display: none;
+  } */
