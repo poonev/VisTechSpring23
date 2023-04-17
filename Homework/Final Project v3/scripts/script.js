@@ -28,6 +28,68 @@ function drawScatterPlot(data) {
         return d.artist === 'Ludwig Mies van der Rohe';
     });
 
+    // //FILTERING MEDIUM
+    // let filtered_data = data.filter(function(d) {
+    //     return d.Name === 'Ludwig Mies van der Rohe';
+    // });
+
+    // let arrayKeywords = ["acrylic","charcoal","collage","colored pencil","crayon","glass","gouache","graphite","ink","lithograph","paint","pen","pencil","print","steel","wood"]; 
+
+    // data.forEach ( function (d) {
+    //     //search in the cell of the data point 'd' (a text),
+    //     //for every cell (for loop), 
+    //         //define your cellText in which you search our occurrences 
+    //     let rawText = d.Medium;
+    //     let newText = [];
+            
+    //     for (let i = 0; i < arrayKeywords.length; i++) {
+    //         let position = rawText.search(arrayKeywords[i]);  
+    //         if (position != -1) {
+    //             newText += " " + arrayKeywords[i];
+    //             //implement if more than 1 word, + ", "
+    //             }
+    //         }
+    //     //for every item in arrayKeywords (for loop over arrayKeywords), 
+    //             // define my queryText= "some text" 
+    //     let queryText = 'item'; 
+    //             //if you find occurrence of 'item' then define newText = 'item'
+    //                 //subset of arrayKeywords
+    //             //if you find occurrence of queryText in cellText, then: 
+    //                 //append queryText in newText array
+    //         //replace d.medium with contents of newText
+    //         //newText is not a text (i.e., string) but an array. So you replace d.medium with the contents of newText, not newText itself. 
+    //     d.Medium = newText;
+    //     // let newText = "search in the cell for occurrences of keywords" 
+    // // console.log(d.Medium); 
+    // })
+
+    // // COUNT OCCURANCES 
+    // const mediumData = []; 
+    // data.forEach( function(currentrow) {
+    //     // console.log(currentrow["Medium"]); 
+    //     var currentMediums = currentrow["Medium"]
+    //     // var newLine = {}
+    //     for (let i = 0; i < arrayKeywords.length; i++) {
+    //         let position = currentMediums.indexOf(arrayKeywords[i]);  
+    //         if (position != -1) {
+    //             // newLine[arrayKeywords[i]] = 1
+    //             var newLine = {}
+    //             newLine["Year"] = currentrow["Date"]
+    //             newLine["Medium"] = arrayKeywords[i]
+    //             mediumData.push(newLine)
+    //             }
+    //         }
+    //     // newLine["Year"] = currentrow["Date"]
+    //     // mediumData.push(newLine)
+    // })
+
+    // const finalData = d3.rollup(mediumData, d=>d.length, d=>d.Year, d=>d.Medium)
+    // console.log(finalData); 
+
+    // for(let obj of finalData.entries()) {
+
+    // }
+
     /*
     3. DETERMINE MIN AND MAX VALUES OF VARIABLES
     */
@@ -153,6 +215,7 @@ function drawScatterPlot(data) {
         // Reset the circles' appearance back to original
         points.attr("opacity", 1);
 
+        
     // Create the filter dropdown menu
 
     const svg = d3.select("#filter-button")

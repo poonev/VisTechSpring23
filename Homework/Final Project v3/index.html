@@ -9,6 +9,20 @@
         <link rel="stylesheet" type="text/css" href="./style/styles.css">
 
         <script src="https://d3js.org/d3.v7.min.js"></script>
+        <!-- <style>  
+            div {  
+              padding-left: 200px; 
+              padding-right: 200px;
+              padding-bottom: 20px; 
+              padding-top: 20px; 
+            }  
+            </style>   -->
+    </head>
+    <body>
+        <img src="pictures/mies.jpg" style="width:105%" alt="welcome photo">
+    </body>
+    <body style="margin:50; padding:50">
+
         <style>  
             div {  
               padding-left: 200px; 
@@ -17,16 +31,12 @@
               padding-top: 20px; 
             }  
             </style>  
-    </head>
-    <body>
-        <img src="pictures/mies.jpg" style="width:105%" alt="welcome photo">
-    </body>
-    <body style="margin:50; padding:50">
+
        <h1 style="color:gray; font-size: 40px">Museum of Modern Art</h1>
        <h1 style="font-size: 50px">Mies van der Rohe</h1>
        <h1> <em>Artworks</em> </h1>
 
-        <div class="container">
+        <div class="column">
             <p align="justify" style="font-size: 25px">About Mies van der Rohe (1886–1969)</p>
             <div class="column">
                 <p1 align="justify" style="font-size: 18px">Mies van der Rohe was a German-American architect and furniture designer and regarded as “one of the pioneers of modernist architecture."
@@ -37,14 +47,12 @@
             </div>
             <div class="column">
                 <img src="pictures/mies photograph.png" style="width:500px" alt="Vereinigte Glaswerke project">
-                <p align="justify" style="font-size: 10px">Vereinigte Glaswerke project, Aachen, Germany, 1969. Cantilever Chair, 1927. Barcelona Chair, 1929.</p>
+                <p align="center" style="font-size: 10px">Vereinigte Glaswerke project, Aachen, Germany, 1969. Cantilever Chair, 1927. Barcelona Chair, 1929.</p>
             </div>
         </div>
-
-            <br><br>
-
+    
         <div class="row">
-            <p align="justify" style="font-size: 25px">The Artworks</p>
+            <p align="justify" style="font-size: 25px">The Artworks Collected by the MoMA</p>
             <div class="column">
                 <p1 align="justify" style="font-size: 18px">The goal of this project is to dig deeper into the MoMA Collection's Datasets by studying one particular 
                 artist: Ludwig Mies van der Rohe. By looking at Mies van der Rohe's works, we want to undrstand the quantity of artworks produced by Mies van der Rohe (collected by the MoMA), 
@@ -53,25 +61,24 @@
                 </div>
             <div class="column">
                     <img src="pictures/bismarck monument.png" style="width:500px" alt="Bismarck Monument">
-                <p align="justify" style="font-size: 10px">Bismarck Monument. Bingen, Germany. Perspective view of courtyard, 1910.</p>
+                <p align="center" style="font-size: 10px">Bismarck Monument. Bingen, Germany. Perspective view of courtyard, 1910.</p>
             </div>
+        </div>
+
+        <br><br><br><br>
+    </body>
+
+    <body>
+        <p1 align="center" style="font-size: 18px">Interact with the scatterplot to learn about Mies van der Rohe's projects, mediums, and his career timeline.</p1>
+        <br><br><br><br>
+        <div class="container" align="center">
+            <div id="chart"></div>
+            <img src="pictures/legend.png" style="width:150px" alt="legend">
         </div>
 
         <br><br>
-
-        <p1 align="justify" style="font-size: 18px">Interact with the scatterplot to learn about Mies van der Rohe's projects, mediums, and his career timeline.</p1>
-
-        <div class="section">
-            <div class="column">
-                <div id="chart"></div>
-
-            </div>
-            <div class="column">
-                <img src="pictures/legend.png" style="width:150px" alt="legend">
-            </div>
-        </div>
-
         <p><a href="./data/artworks.csv">click here to download the dataset from MoMA</a></p>
+        <p><a href="https://github.com/poonev/VisTechSpring23">click here to see my Github page</a></p>
 
         <br><br>
 

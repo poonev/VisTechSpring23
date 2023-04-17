@@ -11,8 +11,10 @@ html, body {
 }
 
 #chart {
-    width: 100%;
+    width: 90%;
     height: 80vh;
+    padding: 0; 
+    align: center; 
 }
 
 .axisLabel {
@@ -34,4 +36,23 @@ html, body {
     font-size: 16px;
     margin: 10px;
     cursor: pointer;
+  }
+
+  .no-padding {
+    padding: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    padding: 0; 
+    align: center; 
+    margin-left: 40px; 
+  }
+  .container img {
+    margin-right: 0px;
+    padding: 0; 
+    align: center; 
   }
