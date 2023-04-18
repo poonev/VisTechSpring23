@@ -192,8 +192,8 @@ function drawScatterPlot(data) {
         
         // Make the tooltip visible when mouse "enters" a point
         tooltip.style("visibility", "visible")
-            .style("top", `${y}px`)
-            .style("left", `${x}px`)
+            .style("top", `${y+2800}px`)
+            .style("left", `${x-30}px`)
             // This is just standard HTML syntax
             .html(`<p><b>${d.year}</b><br><em>${d.medium}</em><br>total quantity: ${displayValue}<br><em>${d.notes}</em></p>`);
 
@@ -216,41 +216,65 @@ function drawScatterPlot(data) {
 
         
     // Create the filter dropdown menu
-    var filterOptions = ['acrylic', 'charcoal', 'collage', 'colored pencil', 'crayon', 'glass', 'gouache', 'graphite','ink','lithograph','paint','pen','pencil','print','steel','wood'];
+    // var filterOptions = ['acrylic', 'charcoal', 'collage', 'colored pencil', 'crayon', 'glass', 'gouache', 'graphite','ink','lithograph','paint','pen','pencil','print','steel','wood'];
 
-    d3.select('#filter')
-        .selectAll('option')
-        .data(filterOptions)
-        .enter()
-        .append('option')
-        .text(function(d) { return d.quantity; })
-        .attr('value', function(d) { return d.quantity; });
+    // d3.select('#filter')
+    //     .selectAll('option')
+    //     .data(filterOptions)
+    //     .enter()
+    //     .append('option')
+    //     .text(function(d) { return d; })
+    //     .attr('value', function(d) { return d; });
     
-    d3.select('#filter').on('change', function() {
-        var selectedOption = d3.select(this).property('value');
-        // Use the selectedOption to filter the data and update the scatterplot
-        });
+    // d3.select('#filter').on('change', function() {
+    //     var selectedOption = d3.select(this).property('value');
+    //     update (selectedOption); 
+    //     // Use the selectedOption to filter the data and update the scatterplot
+    //     });
     
-    var filteredData = data.filter(function(d) {
-        return selectedOption === 'all' || d.quantity === selectedOption;
-        });
+    // // var filtered_Data = data.filter(function(d) {
+    // //     return selectedOption === 'all' || d.quantity === selectedOption;
+    // //     });
     
-        //enter update exit
-    var circles = svg.selectAll('circle')
-        .data(filteredData, function(d) { return d.id; });
+    //     //enter update exit
+    // function update (selectedOption) {
+    // console.log("hello")
+
+    // var filteredMedium = filtered_data.filter(function(d) {
+    //     return selectedOption === 'all' || d.medium === selectedOption;
+
+    //     });
+    
+        
+    // points
+    // .data(filtered_data.filter(function(d){ return selectedOption === "all" || d.medium === selectedOption;}))
+    //     // .data(filteredMedium)
+    //     .transition()
+    //     .duration(1000)
+    //       .attr("cx", function(d) { return xScale(+d.year) })
+    //       .attr("cy", function(d) { return yScale(+d.quantity) })
+    //       .attr("r", function(d) { return rScale(+d.quantity) })
+    //       .attr("fill", function(d) {return fillScale(+d.medium) })
+
+    // console.log(filteredMedium)
+
+    // var circles = svg.selectAll('circle')
+    //     .data(filteredMedium, function(d) { return d; });
       
-      circles.enter().append('circle')
-        .attr('cx', function(d) { return xScale(d.year); })
-        .attr('cy', function(d) { return yScale(d.quantity); })
-        .attr('r', function(d) { return rScale(d.quantity); })
-        .attr('fill', function(d) {return fillScale(d.medium); });
+    //   circles.enter().append('circle')
+    //     .attr('cx', function(d) { return xScale(d.year); })
+    //     .attr('cy', function(d) { return yScale(d.quantity); })
+    //     .attr('r', function(d) { return rScale(d.quantity); })
+    //     .attr('fill', function(d) {return fillScale(d.medium); });
       
-      circles.exit().remove();
+    //   circles.exit().remove();
       
-      circles.attr('cx', function(d) { return xScale(d.year); })
-        .attr('cy', function(d) { return yScale(d.quantity); })
-        .attr('r', function(d) { return rScale(d.quantity); })
-        .attr('fill', function(d) {return fillScale(d.medium); });
-      
-    });
+    //   circles.attr('cx', function(d) { return xScale(d.year); })
+    //     .attr('cy', function(d) { return yScale(d.quantity); })
+    //     .attr('r', function(d) { return rScale(d.quantity); })
+    //     .attr('fill', function(d) {return fillScale(d.medium); });
+    // }
+
+    }); 
+
 }

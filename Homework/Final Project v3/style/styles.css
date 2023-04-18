@@ -25,6 +25,10 @@ html, body {
     color: rgb(75, 75, 75);
 }
 
+.axis {
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
 #filter {
     background-color: #8f8f90; 
     border: none;
@@ -58,17 +62,17 @@ html, body {
     align: center; 
   }
 
-  /* .tooltip {
+  .tooltip {
     position: absolute;
-    top: 0;
+    /* top: 0;
     left: 0;
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     pointer-events: none;
-    display: none;
-  } */
+    display: none; */
+  }
 
   .scatterplot .ticks .tick text::after {
     content: attr(data-value);
