@@ -1,4 +1,6 @@
-Project: MoMA Mies van der Rohe: Medium Study Eva Poon Vis Tech Spring 2023
+Project: MoMA Mies van der Rohe: Medium Study 
+Eva Poon 
+Vis Tech Spring 2023
 
 Summary Image:
 
